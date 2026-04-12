@@ -5,14 +5,24 @@ const mongoose = require('mongoose'); // CRITICAL FIX: Required for Malba Groupi
 
 exports.createTicket = async (req, res) => {
     try {
-        // CRITICAL FIX 1: Look for evidenceImageUrls (Plural)
-        const { wasteCategory, latitude, longitude, evidenceImageUrls } = req.body;
-        const citizenId = req.user?.uid || 'anonymous_citizen'; 
+        // 1. EXTRACT THE NEW FIELDS FOR THE CALL CENTER
+        const { wasteCategory, latitude, longitude, evidenceImageUrls, source, citizenPhone } = req.body;
+        
+        // 2. DEFINE THE VARIABLES THAT WERE MISSING
+        const citizenId = req.user?.uid || citizenPhone || 'anonymous_citizen'; 
+        const ticketSource = source || 'App';
 
-        // CRITICAL FIX 2: Check for evidenceImageUrls
-        if (!wasteCategory || !latitude || !longitude || !evidenceImageUrls || !evidenceImageUrls.length) {
-            return res.status(400).json({ success: false, message: 'Missing required fields' });
+        // 3. IMAGELESS BYPASS FOR 1916 CALL CENTER
+        if (!wasteCategory || !latitude || !longitude) {
+            return res.status(400).json({ success: false, message: 'Missing location or category' });
         }
+        
+        if (ticketSource === 'App' && (!evidenceImageUrls || !evidenceImageUrls.length)) {
+            return res.status(400).json({ success: false, message: 'App reports require photographic evidence' });
+        }
+
+        // CRITICAL FIX: Do not use dummy images. If it's a call, save an empty array.
+        const finalImages = evidenceImageUrls || [];
 
         const ticketLocation = { type: 'Point', coordinates: [parseFloat(longitude), parseFloat(latitude)] };
         const isMalba = wasteCategory.includes('Malba') || wasteCategory.includes('Truck');
@@ -45,8 +55,9 @@ exports.createTicket = async (req, res) => {
 
             const ticket = await Ticket.create({
                 citizenId, wasteCategory, location: ticketLocation,
-                creatorOriginalCategory: wasteCategory, // NEW
-                evidenceImageUrls, // NO BRACKETS NEEDED: It is already an array from Flutter!
+                creatorOriginalCategory: wasteCategory,
+                evidenceImageUrls: finalImages, // USING FINAL IMAGES
+                source: ticketSource,           // SAVING THE SOURCE
                 wardId: assignedWardId, status: 'Under Authority Review', malbaGroupId: groupId
             });
 
@@ -63,7 +74,6 @@ exports.createTicket = async (req, res) => {
         });
 
         if (duplicateTicket) {
-            // NEW CRITICAL FIX: Block upvotes if the ticket is already being processed by officials!
             if (duplicateTicket.status !== 'Ticket Raised' && duplicateTicket.status !== 'Under Authority Review') {
                 return res.status(400).json({ 
                     success: false, 
@@ -80,18 +90,16 @@ exports.createTicket = async (req, res) => {
             }
             
             duplicateTicket.upvoteCount += 1;
-            // CRITICAL FIX: Save the source of the upvote!
-            duplicateTicket.upvoters.push({ 
-                citizenId, 
-                originalCategory: wasteCategory, 
-                hasUpdated: false,
-                source: ticketSource // This variable was defined at the top of your function
-            });
             
-            // CRITICAL FIX 3: Push the newest image into the gallery array!
-            const newImage = evidenceImageUrls[0];
-            if (!duplicateTicket.evidenceImageUrls.includes(newImage)) {
-                duplicateTicket.evidenceImageUrls.push(newImage);
+            // CRITICAL FIX: Using the newly defined ticketSource!
+            duplicateTicket.upvoters.push({ citizenId, originalCategory: wasteCategory, hasUpdated: false, source: ticketSource });
+            
+            // CRITICAL FIX: Only attempt to push an image to the gallery if one actually exists!
+            if (finalImages && finalImages.length > 0) {
+                const newImage = finalImages[0];
+                if (!duplicateTicket.evidenceImageUrls.includes(newImage)) {
+                    duplicateTicket.evidenceImageUrls.push(newImage);
+                }
             }
             
             let currentVotes = duplicateTicket.categoryVotes.get(wasteCategory) || 0;
@@ -116,8 +124,9 @@ exports.createTicket = async (req, res) => {
 
         const ticket = await Ticket.create({
             citizenId, wasteCategory, location: ticketLocation,
-            creatorOriginalCategory: wasteCategory, // NEW
-            evidenceImageUrls, // ALREADY AN ARRAY
+            creatorOriginalCategory: wasteCategory, 
+            evidenceImageUrls: finalImages, // USING FINAL IMAGES
+            source: ticketSource,           // SAVING THE SOURCE
             wardId: assignedWardId, status: 'Ticket Raised'
         });
 
@@ -294,5 +303,60 @@ exports.updateTicketCategory = async (req, res) => {
         res.status(200).json({ success: true, message: 'Category updated successfully', data: ticket });
     } catch (error) {
         res.status(500).json({ success: false, message: 'Server Error updating category' });
+    }
+};
+
+// @desc    Receive automated payloads from Twitter/Zapier Webhooks
+// @route   POST /api/tickets/webhook/twitter
+exports.twitterWebhook = async (req, res) => {
+    try {
+        const { twitterHandle, wasteCategory, latitude, longitude, imageUrl } = req.body;
+
+        if (!latitude || !longitude || !imageUrl) {
+            return res.status(400).json({ success: false, message: 'Missing required Twitter data' });
+        }
+
+        const ticketLocation = { type: 'Point', coordinates: [parseFloat(longitude), parseFloat(latitude)] };
+        const citizenId = twitterHandle || 'twitter_user';
+        const assignedWardId = 'K/East'; // Simplified for webhook
+
+        // Check for 30m duplicates
+        const duplicateTicket = await Ticket.findOne({
+            wasteCategory: { $not: { $regex: /Malba|Truck/i } }, 
+            location: { $near: { $geometry: ticketLocation, $maxDistance: 30 } },
+            status: { $nin: ['Resolved', 'Invalid Report'] } 
+        });
+
+        if (duplicateTicket) {
+            duplicateTicket.upvoteCount += 1;
+            duplicateTicket.upvoters.push({ citizenId, originalCategory: wasteCategory, hasUpdated: false, source: 'Twitter' });
+            
+            if (!duplicateTicket.evidenceImageUrls.includes(imageUrl)) {
+                duplicateTicket.evidenceImageUrls.push(imageUrl);
+            }
+            await duplicateTicket.save();
+            return res.status(200).json({ success: true, message: 'Tweet merged with existing SpotFix ticket.' });
+        }
+
+        // Create new ticket from Tweet
+        const ticket = await Ticket.create({
+            citizenId, 
+            wasteCategory: wasteCategory || 'Mixed Garbage', 
+            location: ticketLocation,
+            creatorOriginalCategory: wasteCategory || 'Mixed Garbage',
+            evidenceImageUrls: [imageUrl],
+            source: 'Twitter',
+            wardId: assignedWardId, 
+            status: 'Ticket Raised'
+        });
+
+        ticket.categoryVotes.set(wasteCategory || 'Mixed Garbage', 1);
+        await ticket.save();
+
+        res.status(201).json({ success: true, message: 'Tweet successfully converted to SpotFix Ticket', data: ticket });
+
+    } catch (error) {
+        console.error("Twitter Webhook Error:", error);
+        res.status(500).json({ success: false, message: 'Webhook processing failed' });
     }
 };

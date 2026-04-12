@@ -1,15 +1,15 @@
 const express = require('express');
-const { createTicket, getTickets, updateTicketStatus, updateTicketCategory } = require('../controllers/ticketController'); 
+const { createTicket, getTickets, updateTicketStatus, updateTicketCategory, twitterWebhook } = require('../controllers/ticketController'); 
 const { protectRoute } = require('../middlewares/authMiddleware'); 
 
 const router = express.Router();
 
-// Citizens MUST be logged in to create or edit a category
+// NEW: Public Webhook for Twitter
+router.post('/webhook/twitter', twitterWebhook);
+
 router.post('/', protectRoute, createTicket); 
 router.put('/:id/category', protectRoute, updateTicketCategory); 
-
-// CRITICAL FIX: Removed 'protectRoute' so the React Web Dashboard can read & update!
-router.get('/', getTickets);
+router.get('/', getTickets); // Removed 'protectRoute' so the React Web Dashboard can read & update!
 router.put('/:id', updateTicketStatus);
 
 module.exports = router;

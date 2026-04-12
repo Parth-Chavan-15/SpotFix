@@ -6,6 +6,11 @@ if (!admin.apps.length) {
 }
 
 const protectRoute = async (req, res, next) => {
+    // CRITICAL FIX: Bypass Firebase Auth for the internal 1916 Call Center Portal
+    if (req.body && req.body.source === 'Call') {
+        return next(); 
+    }
+
     // Fail-safe early return pattern
     if (!req.headers.authorization || !req.headers.authorization.startsWith('Bearer')) {
         return res.status(401).json({ success: false, message: 'Not authorized, no token provided' });

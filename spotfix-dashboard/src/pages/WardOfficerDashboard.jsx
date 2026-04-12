@@ -85,17 +85,17 @@ const WardOfficerDashboard = () => {
 
   // REUSABLE UI: Individual Ticket Card
   const renderTicketCard = (ticket) => {
-    // Calculate the Omnichannel Breakdown
     let appCount = ticket.source === 'App' ? 1 : 0;
     let callCount = ticket.source === 'Call' ? 1 : 0;
+    let twitterCount = ticket.source === 'Twitter' ? 1 : 0; // NEW
     
-    // Add up the upvoters' sources safely
     if (ticket.upvoters && ticket.upvoters.length > 0) {
         ticket.upvoters.forEach(u => {
             if (u.source === 'App') appCount++;
             if (u.source === 'Call') callCount++;
+            if (u.source === 'Twitter') twitterCount++; // NEW
         });
-    } 
+    }
 
     return (
       <div key={ticket._id} className={`bg-white rounded-xl shadow-md overflow-hidden border-t-4 ${mainCategory === 'malba' ? 'border-brown-600' : 'border-green-600'} mb-6`}>
@@ -163,6 +163,10 @@ const WardOfficerDashboard = () => {
                </span>
                <span className={`flex items-center text-sm font-bold ${callCount > 0 ? 'text-green-600' : 'text-gray-300'}`}>
                  <Phone className="w-4 h-4 mr-1" /> {callCount}
+               </span>
+               {/* NEW TWITTER BADGE (Using safe MessageSquare icon) */}
+               <span className={`flex items-center text-sm font-bold ${twitterCount > 0 ? 'text-sky-500' : 'text-gray-300'}`}>
+                 <MessageSquare className="w-4 h-4 mr-1" /> {twitterCount}
                </span>
             </div>
           </div>
