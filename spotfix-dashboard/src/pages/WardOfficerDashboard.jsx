@@ -14,7 +14,12 @@ const WardOfficerDashboard = () => {
   // NEW: 5-Stage Pipeline Tabs
   const [activeTab, setActiveTab] = useState('inbox');
   
-  const [dispatchModal, setDispatchModal] = useState({ isOpen: false, ticketId: null, truckType: 'Mini Tipper (Narrow Streets)' }); 
+  const [dispatchModal, setDispatchModal] = useState({ isOpen: false, ticketId: null, truckType: 'Mini Tipper (Narrow Streets)' });
+  
+  // NEW: Mock data for Contractor Approvals
+  const [pendingContracts, setPendingContracts] = useState([
+    { id: 'PROJ-993', company: 'L&T Infrastructure', site: 'Bandra Coastal Road', volume: 12000 }
+  ]);
 
   useEffect(() => {
     fetchTickets(); 
@@ -211,60 +216,115 @@ const WardOfficerDashboard = () => {
           <p className="text-gray-500 mt-1">Omnichannel Live Dispatch System</p>
         </div>
         
-        <div className="flex bg-white rounded-lg shadow-sm border border-gray-200 p-1">
+        <div className="flex bg-white rounded-lg shadow-sm border border-gray-200 p-1 space-x-1">
           <button onClick={() => { setMainCategory('general'); setActiveTab('inbox'); }} className={`flex items-center px-4 py-2 rounded-md font-bold transition-all ${mainCategory === 'general' ? 'bg-green-600 text-white' : 'text-gray-500 hover:bg-gray-100'}`}>
             <Trash2 className="w-5 h-5 mr-2" /> General Garbage
           </button>
           <button onClick={() => { setMainCategory('malba'); setActiveTab('inbox'); }} className={`flex items-center px-4 py-2 rounded-md font-bold transition-all ${mainCategory === 'malba' ? 'bg-brown-600 text-white' : 'text-gray-500 hover:bg-gray-100'}`} style={{ backgroundColor: mainCategory === 'malba' ? '#78350f' : '' }}>
-            <HardHat className="w-5 h-5 mr-2" /> C&D / Malba
+            <HardHat className="w-5 h-5 mr-2" /> C&D Grievances
+          </button>
+          {/* NEW: Landfill Approvals Tab */}
+          <button onClick={() => setMainCategory('approvals')} className={`flex items-center px-4 py-2 rounded-md font-bold transition-all border-l border-gray-200 ml-2 pl-3 ${mainCategory === 'approvals' ? 'bg-indigo-600 text-white' : 'text-indigo-600 hover:bg-indigo-50'}`}>
+            <ClipboardList className="w-5 h-5 mr-2" /> Landfill Allocations
           </button>
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-3 mb-8 border-b pb-4">
-        <button onClick={() => setActiveTab('inbox')} className={`flex items-center px-5 py-2.5 rounded-lg font-bold transition-all ${activeTab === 'inbox' ? 'bg-blue-100 text-blue-800 border-2 border-blue-500' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
-          <ShieldAlert className="w-4 h-4 mr-2" /> Inbox ({inboxTickets.length})
-        </button>
-        <button onClick={() => setActiveTab('pending')} className={`flex items-center px-5 py-2.5 rounded-lg font-bold transition-all ${activeTab === 'pending' ? 'bg-indigo-100 text-indigo-800 border-2 border-indigo-500' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
-          <Clock className="w-4 h-4 mr-2" /> Pending Assessment ({pendingTickets.length})
-        </button>
-        <button onClick={() => setActiveTab('verified')} className={`flex items-center px-5 py-2.5 rounded-lg font-bold transition-all ${activeTab === 'verified' ? 'bg-red-100 text-red-800 border-2 border-red-500' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
-          <ClipboardList className="w-4 h-4 mr-2" /> Action Required ({verifiedTickets.length})
-        </button>
-        <button onClick={() => setActiveTab('cleaning')} className={`flex items-center px-5 py-2.5 rounded-lg font-bold transition-all ${activeTab === 'cleaning' ? 'bg-orange-100 text-orange-800 border-2 border-orange-500' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
-          <Truck className="w-4 h-4 mr-2" /> In Cleaning ({inCleaningTickets.length})
-        </button>
-        <button onClick={() => setActiveTab('resolved')} className={`flex items-center px-5 py-2.5 rounded-lg font-bold transition-all ${activeTab === 'resolved' ? 'bg-gray-800 text-white border-2 border-gray-900' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
-          <CheckCircle className="w-4 h-4 mr-2" /> Archive / Resolved ({resolvedTickets.length})
-        </button>
-      </div>
+      {mainCategory !== 'approvals' ? (
+        <>
+          <div className="flex flex-wrap gap-3 mb-8 border-b pb-4">
+            <button onClick={() => setActiveTab('inbox')} className={`flex items-center px-5 py-2.5 rounded-lg font-bold transition-all ${activeTab === 'inbox' ? 'bg-blue-100 text-blue-800 border-2 border-blue-500' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
+              <ShieldAlert className="w-4 h-4 mr-2" /> Inbox ({inboxTickets.length})
+            </button>
+            <button onClick={() => setActiveTab('pending')} className={`flex items-center px-5 py-2.5 rounded-lg font-bold transition-all ${activeTab === 'pending' ? 'bg-indigo-100 text-indigo-800 border-2 border-indigo-500' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
+              <Clock className="w-4 h-4 mr-2" /> Pending Assessment ({pendingTickets.length})
+            </button>
+            <button onClick={() => setActiveTab('verified')} className={`flex items-center px-5 py-2.5 rounded-lg font-bold transition-all ${activeTab === 'verified' ? 'bg-red-100 text-red-800 border-2 border-red-500' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
+              <ClipboardList className="w-4 h-4 mr-2" /> Action Required ({verifiedTickets.length})
+            </button>
+            <button onClick={() => setActiveTab('cleaning')} className={`flex items-center px-5 py-2.5 rounded-lg font-bold transition-all ${activeTab === 'cleaning' ? 'bg-orange-100 text-orange-800 border-2 border-orange-500' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
+              <Truck className="w-4 h-4 mr-2" /> In Cleaning ({inCleaningTickets.length})
+            </button>
+            <button onClick={() => setActiveTab('resolved')} className={`flex items-center px-5 py-2.5 rounded-lg font-bold transition-all ${activeTab === 'resolved' ? 'bg-gray-800 text-white border-2 border-gray-900' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
+              <CheckCircle className="w-4 h-4 mr-2" /> Archive / Resolved ({resolvedTickets.length})
+            </button>
+          </div>
 
-      {mainCategory === 'general' || displayTickets.length === 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayTickets.map(renderTicketCard)}
-          {displayTickets.length === 0 && (
-            <div className="col-span-full p-12 text-center bg-white rounded-xl border border-gray-200 shadow-sm">
-              <CheckCircle className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-gray-800">Queue Cleared</h3>
-              <p className="text-gray-500 mt-2">No tickets currently in this stage.</p>
+          {mainCategory === 'general' || displayTickets.length === 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {displayTickets.map(renderTicketCard)}
+              {displayTickets.length === 0 && (
+                <div className="col-span-full p-12 text-center bg-white rounded-xl border border-gray-200 shadow-sm">
+                  <CheckCircle className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-gray-800">Queue Cleared</h3>
+                  <p className="text-gray-500 mt-2">No tickets currently in this stage.</p>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="space-y-8">
+              {Object.entries(groupedMalba).map(([groupId, groupTickets]) => (
+                <div key={groupId} className="bg-red-50 rounded-2xl border-2 border-red-200 p-6 shadow-sm relative">
+                  <div className="absolute -top-4 left-6 bg-red-600 text-white px-4 py-1 rounded-full text-sm font-bold shadow-md flex items-center">
+                    <ShieldAlert className="w-4 h-4 mr-2" />
+                    50m Incident Zone Detected (Group: {groupId.slice(-6)})
+                  </div>
+                  <p className="text-red-800 font-semibold mb-4 mt-2">The system has clustered {groupTickets.length} report(s) originating from the same physical hotspot.</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {groupTickets.map(renderTicketCard)}
+                  </div>
+                </div>
+              ))}
             </div>
           )}
-        </div>
+        </>
       ) : (
-        <div className="space-y-8">
-          {Object.entries(groupedMalba).map(([groupId, groupTickets]) => (
-            <div key={groupId} className="bg-red-50 rounded-2xl border-2 border-red-200 p-6 shadow-sm relative">
-              <div className="absolute -top-4 left-6 bg-red-600 text-white px-4 py-1 rounded-full text-sm font-bold shadow-md flex items-center">
-                <ShieldAlert className="w-4 h-4 mr-2" />
-                50m Incident Zone Detected (Group: {groupId.slice(-6)})
-              </div>
-              <p className="text-red-800 font-semibold mb-4 mt-2">The system has clustered {groupTickets.length} report(s) originating from the same physical hotspot.</p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {groupTickets.map(renderTicketCard)}
-              </div>
+        /* NEW: LANDFILL ALLOCATIONS UI */
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-5 mb-6 flex items-start">
+            <ShieldAlert className="w-6 h-6 text-indigo-600 mr-3 flex-shrink-0" />
+            <div>
+              <h3 className="font-bold text-indigo-900 mb-1">Contractor Approval Required</h3>
+              <p className="text-sm text-indigo-800">Assign a specific landfill based on current daily capacities before authorizing C&D dumping manifests.</p>
             </div>
-          ))}
+          </div>
+
+          <div className="space-y-4">
+            {pendingContracts.map(contract => (
+              <div key={contract.id} className="bg-white border border-gray-200 rounded-xl p-6 flex justify-between items-center shadow-sm">
+                <div>
+                  <h4 className="text-lg font-extrabold text-gray-800">{contract.company}</h4>
+                  <p className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-3">Site: {contract.site} (ID: {contract.id})</p>
+                  <span className="bg-amber-100 text-amber-800 font-bold px-3 py-1 rounded-md text-sm border border-amber-200">
+                    Requested Volume: {contract.volume} Tons
+                  </span>
+                </div>
+                <div className="flex flex-col items-end w-72">
+                  <label className="text-xs font-bold text-gray-500 mb-1 uppercase">Assign Landfill Target</label>
+                  <select className="w-full p-2 border border-gray-300 rounded-lg mb-3 outline-none focus:border-indigo-500 text-sm font-semibold">
+                    <option>Deonar (Capacity: 85%)</option>
+                    <option>Mulund (Capacity: 30%)</option>
+                    <option>Kanjurmarg (Capacity: 45%)</option>
+                  </select>
+                  <button 
+                    onClick={() => {
+                      setPendingContracts(pendingContracts.filter(c => c.id !== contract.id));
+                      alert(`Contract ${contract.id} Approved and linked to selected landfill.`);
+                    }} 
+                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-lg transition-colors"
+                  >
+                    Authorize & Sign Contract
+                  </button>
+                </div>
+              </div>
+            ))}
+            {pendingContracts.length === 0 && (
+              <div className="text-center p-10 bg-white rounded-xl border border-gray-200">
+                <CheckCircle className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+                <p className="text-gray-500 font-bold">No pending allocations.</p>
+              </div>
+            )}
+          </div>
         </div>
       )}
 

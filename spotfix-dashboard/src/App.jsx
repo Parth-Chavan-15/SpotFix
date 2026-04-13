@@ -1,36 +1,48 @@
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import WardOfficerDashboard from './pages/WardOfficerDashboard';
 import CallCenterIntake from './pages/CallCenterIntake';
+import PortalSelection from './pages/PortalSelection'; // NEW IMPORT
+import ContractorPortal from './pages/ContractorPortal';
 
 const SuperAdminPortal = () => <div className="p-10 text-2xl font-bold">🗺️ Super Admin Heatmaps & Analytics</div>;
-const ContractorPortal = () => <div className="p-10 text-2xl font-bold">🚧 Contractor Registration & Manifests</div>;
 
 // Helper component to manage the dynamic Navbar
 const Layout = ({ children }) => {
   const location = useLocation();
+  const navigate = useNavigate(); // NEW: Hook for the logout button
 
   // Dynamically set the title based on the route
   let activeTabName = "Enterprise Hub";
-  if (location.pathname === '/ward-officer') activeTabName = "Ward Dispatch Queue";
+  if (location.pathname === '/') activeTabName = "Access Gateway";
+  else if (location.pathname === '/ward-officer') activeTabName = "Ward Dispatch Queue";
   else if (location.pathname === '/super-admin') activeTabName = "City Analytics Dashboard";
   else if (location.pathname === '/contractor-portal') activeTabName = "C&D Contractors Portal";
   else if (location.pathname === '/1916-portal') activeTabName = "1916 Centralized Intake";
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <nav className="bg-slate-900 text-white p-4 shadow-md flex justify-between items-center px-8">
-        <div className="flex items-center space-x-5">
-           <h1 className="text-2xl font-black tracking-wider text-green-400">Spot<span className="text-white">Fix</span></h1>
-           <span className="text-sm font-semibold text-gray-300 border-l border-gray-600 pl-5 py-1 tracking-wide uppercase">
+      <nav className="bg-[#0f172a] text-white p-4 shadow-lg flex justify-between items-center px-8 border-b-[3px] border-green-500">
+        <div className="flex items-center space-x-6">
+           <h1 
+             onClick={() => navigate('/')} 
+             className="text-2xl font-black tracking-wider text-green-400 cursor-pointer hover:opacity-80 transition-opacity"
+           >
+             Spot<span className="text-white">Fix</span>
+           </h1>
+           <span className="text-sm font-bold text-slate-300 border-l-2 border-slate-700 pl-6 py-1 tracking-widest uppercase">
              {activeTabName}
            </span>
         </div>
-        <button 
-          onClick={() => alert("Logout logic will redirect to opening screen later!")} 
-          className="text-sm font-bold text-red-400 hover:text-red-300 transition-colors border border-red-500/30 px-5 py-2 rounded-lg hover:bg-red-500/10"
-        >
-          Logout Session
-        </button>
+        
+        {/* CRITICAL FIX: Only show the Logout button if the user is NOT on the gateway page */}
+        {location.pathname !== '/' && (
+          <button 
+            onClick={() => navigate('/')} 
+            className="text-xs font-bold text-slate-300 hover:text-white transition-all border border-slate-600 px-5 py-2 rounded-md hover:bg-slate-800 hover:border-slate-400 uppercase tracking-wider shadow-sm"
+          >
+            Logout Session
+          </button>
+        )}
       </nav>
       <main className="flex-1">
         {children}
@@ -44,7 +56,8 @@ function App() {
     <Router>
       <Layout>
         <Routes>
-          <Route path="/" element={<Navigate to="/ward-officer" replace />} />
+          {/* CRITICAL FIX: Base URL now directly loads the PortalSelection component */}
+          <Route path="/" element={<PortalSelection />} />
           <Route path="/ward-officer" element={<WardOfficerDashboard />} />
           <Route path="/super-admin" element={<SuperAdminPortal />} />
           <Route path="/contractor-portal" element={<ContractorPortal />} />
