@@ -1,3 +1,5 @@
+<div align="center">
+
 # SpotFix 🌿🚛
 ### *Omnichannel Civic Grievance & Intelligent Anti-Dumping Enforcement Network*
 
@@ -6,25 +8,38 @@
 [![React 19](https://img.shields.io/badge/React-19.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev/)
-[![MongoDB Geospatial](https://img.shields.io/badge/MongoDB-Spatial_Clustering-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Spatial_Clustering-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![Firebase](https://img.shields.io/badge/Firebase-Auth_%26_Cloud-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
----
+<br/>
 
-<p align="center">
-  <img src="docs/assets/desktop_preview.png" alt="SpotFix Enterprise Gateway" width="62%" style="border-radius: 10px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); vertical-align: middle; margin-right: 12px;" />
-  <img src="docs/assets/mobile_preview.jpg" alt="SpotFix Mobile App" width="28%" style="border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); vertical-align: middle;" />
-</p>
-<p align="center">
-  <em><b>SpotFix Dual Command Ecosystem:</b> Enterprise Web Control Gateway (Desktop) &amp; Multi-Role On-Ground Field Engine (Mobile)</em>
-</p>
+<table align="center" width="100%">
+  <tr>
+    <th width="62%" align="center">🖥️ SpotFix Enterprise Gateway (Web Operations Hub)</th>
+    <th width="38%" align="center">📱 SpotFix Mobile App (Citizen &amp; Enforcement Portal)</th>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">
+      <img src="docs/assets/desktop_preview.png" alt="SpotFix Enterprise Gateway" width="100%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" />
+      <br/><br/>
+      <sub><b>Official Command Node:</b> Real-time grievance dispatch, multi-ward triage, contractor fleet tracking &amp; landfill capacity allocation.</sub>
+    </td>
+    <td align="center" valign="middle">
+      <img src="docs/assets/mobile_preview.jpg" alt="SpotFix Mobile App" width="100%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" />
+      <br/><br/>
+      <sub><b>Field-Ready Mobile Engine:</b> Multilingual role switcher for Citizens, Site Inspectors, Logistics Crews &amp; Traffic Police.</sub>
+    </td>
+  </tr>
+</table>
+
+</div>
 
 ---
 
 ## 🌟 The Urban Crisis & The SpotFix Solution
 
-Modern metropolitan cities face two massive, compounding civic crises:
+Modern metropolitan cities face two compounding civic crises:
 
 1. **The Citizen Complaint Avalanche:** When a public dumpster overflows, dozens of concerned citizens report the exact same location. Municipal control rooms become paralyzed under thousands of duplicate tickets, leaving officials blind to which sites are genuine emergencies.
 2. **The "Malba" Dark Economy:** Millions of tons of Construction & Demolition (C&D) debris are dumped illegally under cover of darkness onto highways, mangroves, and empty plots. Rogue contractors pocket landfill disposal fees, while cities foot astronomical cleanup bills.
@@ -34,23 +49,11 @@ Modern metropolitan cities face two massive, compounding civic crises:
 ### The SpotFix Breakthrough
 **SpotFix** replaces fragmented municipal response systems with an **intelligent, tamper-evident civic coordination network**. By combining **spatial deduplication**, **IoT vehicle weight sensors**, **camera-based license plate recognition**, and **automated nearest-truck routing**, SpotFix connects citizens, field inspectors, logistics crews, traffic police, contractors, and weighbridges into one unified, real-time operating system.
 
-```
-       📱 Citizens  •  📞 1916 Helpline  •  🐦 Social Channels
-                                │
-                                ▼
-                 ┌─────────────────────────────┐
-                 │    SpotFix Spatial Engine   │
-                 │   30m Dedupe & 50m Hotspots │
-                 └──────────────┬──────────────┘
-                                │
-               ┌────────────────┴────────────────┐
-               ▼                                 ▼
-   [General Civic Waste]              [Rogue C&D / Malba]
-   • Community Upvote Clustering      • IoT Mid-Transit Dump Detection
-   • Ward Inspection Pipeline         • Weighbridge Mass-Balance Audit
-   • Nearest-Truck VRP Dispatch       • ANPR Checkpoint Interception
-   • 3-Angle Geo-Fenced Proof         • Automated ₹50,000 Fine Packages
-```
+| Intake Channels | Intelligence Layer | Operational Outcomes |
+| :--- | :--- | :--- |
+| 📱 **Mobile App Reports**<br/>Live camera capture + genuine GPS | 📍 **30m Spatial Deduplication**<br/>Auto-merges nearby reports & upvotes | 🚛 **Smart Fleet Routing**<br/>Dispatches nearest idle municipal truck |
+| 📞 **1916 Phone Hotline**<br/>Rapid telephonic intake for all citizens | 🔍 **50m Malba Hotspots**<br/>Clusters illegal debris into macro zones | 🛡️ **30m Geo-Fence Enforcer**<br/>Blocks remote closures from home |
+| 🐦 **Social Media Channels**<br/>Automated Twitter/X tag ingestion | ⚖️ **IoT Load-Cell Telemetry**<br/>Real-time bed weight drop surveillance | 📸 **3-Angle Photo Verification**<br/>Ensures indisputable proof of clean streets |
 
 ---
 
@@ -58,28 +61,12 @@ Modern metropolitan cities face two massive, compounding civic crises:
 
 SpotFix introduces an airtight four-layer net to eradicate illegal debris dumping:
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│               THE 4 PILLARS OF SPOTFIX DEBRIS ENFORCEMENT              │
-├────────────────────────────────┬───────────────────────────────────────┤
-│ 🔍 Pillar 1: Visual ANPR Check │ Instant license plate recognition on  │
-│    Citizen & Police Cameras    │ commercial dumpers cross-checked with │
-│                                │ municipal contractor registries.      │
-├────────────────────────────────┼───────────────────────────────────────┤
-│ ⚖️ Pillar 2: Smart IoT Bed     │ Truck-mounted load cells stream weight│
-│    Telemetry & Geofencing      │ drops in real-time. Unauthorized drops│
-│                                │ outside legal landfills trigger ₹50k  │
-│                                │ fines automatically.                  │
-├────────────────────────────────┼───────────────────────────────────────┤
-│ 📊 Pillar 3: Mass Balance      │ Digital ledger reconciles excavation  │
-│    Volumetric Audit            │ site estimates with certified landfill│
-│                                │ weighbridge receipts at project close.│
-├────────────────────────────────┼───────────────────────────────────────┤
-│ 📍 Pillar 4: Spatial Hotspot   │ Clusters neighboring debris reports   │
-│    Incident Clustering         │ within 50 meters into single unified  │
-│                                │ incident zones for macro cleanup.     │
-└────────────────────────────────┴───────────────────────────────────────┘
-```
+| Pillar | Focus | Technology & Mechanism | Enforcement Outcome |
+| :---: | :--- | :--- | :--- |
+| **01** | **Visual ANPR Plate Check** | Citizen & Police cameras scan commercial dumper plates | Instant cross-reference against municipal fleet database; flags unregistered rogue trucks. |
+| **02** | **Smart IoT Bed Telemetry** | ESP32 load-cells stream real-time weight on truck beds | Sudden weight drop outside authorized landfill geofences triggers automated **₹50,000 INR** fines. |
+| **03** | **Mass Balance Volumetric Audit** | Certified digital ledger matches permits to weighbridges | Reconciles excavation volume with landfill drop-off receipts before closing contractor contracts. |
+| **04** | **Spatial Hotspot Clustering** | Proximity engine groups repeat reports within 50 meters | Unifies fragmented complaints into a single macro incident zone for high-capacity excavator dispatch. |
 
 ---
 
@@ -127,99 +114,140 @@ SpotFix is engineered so that every participant in the city has a dedicated, fri
 
 ## 📊 Interactive System Workflows
 
-Click each dropdown below to view clear, step-by-step visual diagrams of how SpotFix handles operations:
-
-### 1. The Complete Civic Grievance Journey
-
-<details>
-<summary><b>Expand Workflow: How a Report Travels from Citizen to Clean Street</b></summary>
-<br>
-
-```mermaid
-flowchart TD
-    classDef startEnd fill:#10B981,stroke:#059669,stroke-width:2px,color:#fff;
-    classDef step fill:#F3F4F6,stroke:#9CA3AF,stroke-width:1.5px,color:#1F2937;
-    classDef decision fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px,color:#92400E;
-    classDef alert fill:#FEE2E2,stroke:#EF4444,stroke-width:2px,color:#991B1B;
-    classDef success fill:#ECFDF5,stroke:#10B981,stroke-width:2px,color:#065F46;
-
-    START(["Citizen Reports Waste"]):::startEnd --> INTAKE{"Choose Channel"}:::decision
-    INTAKE -->|"Mobile App"| CAM["Live Camera Photo + Real GPS Location"]:::step
-    INTAKE -->|"1916 Phone Helpline"| OPERATOR["Operator Logs Coordinates & Category"]:::step
-    INTAKE -->|"Social Media"| SOCIAL["Automated Tag & Location Intake"]:::step
-
-    CAM --> RADIUS{"Is There an Active Report\nWithin 30 Meters?"}:::decision
-    OPERATOR --> RADIUS
-    SOCIAL --> RADIUS
-
-    RADIUS -->|"Yes (Existing Hotspot)"| MERGE["Auto-Merge & Upvote\nCommunity Tally Increases"]:::alert
-    RADIUS -->|"No (New Location)"| NEW_TICKET["New Ticket Sent to Ward Command"]:::success
-
-    MERGE --> DISPATCH
-    NEW_TICKET --> DISPATCH["Ward Officer Assigns Site Inspector"]:::step
-    DISPATCH --> INSPECT["Inspector Verifies Site & Recommends Vehicle"]:::step
-    INSPECT --> AUTO_TRUCK["Smart Routing Dispatches Nearest Idle Truck"]:::step
-    AUTO_TRUCK --> RESOLVE["Crew Cleans Site & Uploads 3 Photo Angles"]:::success
-    RESOLVE --> CLOSE(["Ticket Verified & Resolved"]):::startEnd
-```
-
-</details>
+Explore the visual workflows below to see how SpotFix handles end-to-end municipal operations:
 
 ---
 
-### 2. Rogue Debris Tracking & Automated Fines
+### 🗺️ Workflow 1: The Complete Civic Grievance Journey
 
 <details>
-<summary><b>Expand Workflow: How Illegal Nighttime Dumping is Caught and Penalized</b></summary>
-<br>
+<summary><b>Click to Expand: Step-by-Step Report Lifecycle (From Photo Snapshot to Cleaned Street)</b></summary>
+<br/>
 
 ```mermaid
 flowchart TD
-    classDef event fill:#EFF6FF,stroke:#3B82F6,stroke-width:1.5px,color:#1E40AF;
-    classDef sensor fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px,color:#92400E;
-    classDef check fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#111827;
-    classDef fine fill:#FEE2E2,stroke:#DC2626,stroke-width:2px,color:#991B1B;
-    classDef ok fill:#ECFDF5,stroke:#059669,stroke-width:2px,color:#065F46;
-
-    subgraph DETECTION["Real-Time Tracking & Detection"]
-        CAM_SCAN["Citizen or Police Scans License Plate"]:::event
-        IOT_DROP["Truck Bed Load-Cell Detects Sudden Weight Drop"]:::sensor
+    subgraph INTAKE["1. Omnichannel Ingestion"]
+        A["📱 Citizen Mobile App\n(Photo + Verified GPS)"]:::blueNode
+        B["📞 1916 Phone Hotline\n(Operator Telephonic Intake)"]:::blueNode
+        C["🐦 Social Media / Twitter\n(Automated Tag & Location Parser)"]:::blueNode
     end
 
-    CAM_SCAN --> REG_CHECK{"Is Vehicle in Authorized Fleet Registry?"}:::check
-    REG_CHECK -->|"Authorized Contractor"| FLEET_OK["Vehicle Validated & Logged"]:::ok
-    REG_CHECK -->|"Unregistered / Rogue"| POLICE_ALERT["Alert Sent to Traffic Police Checkpoint"]:::fine
+    subgraph DEDUPE["2. Spatial Deduplication Engine"]
+        D{"Nearby Report\nwithin 30 Meters?"}:::amberNode
+        E["🔥 Auto-Merge & Upvote\nCommunity Tally Increments\n(Original Votes Preserved)"]:::purpleNode
+        F["📍 New Geotagged Ticket Created\nAuto-Routed to Ward Boundary"]:::greenNode
+    end
 
-    IOT_DROP --> GEO_CHECK{"Did Weight Drop Inside Official Landfill Geofence?"}:::check
-    GEO_CHECK -->|"Inside Landfill"| LEGAL["Official Landfill Dump Confirmed"]:::ok
-    GEO_CHECK -->|"Outside Legal Boundaries"| ILLEGAL["Code Red: Illegal Mid-Transit Dump Detected"]:::fine
+    subgraph TRIAGE["3. Ward Command & Inspection"]
+        G["🏛️ Ward Officer Command\nAssigns Field Inspector"]:::slateNode
+        H["📋 Site Inspector\nValidates Condition & Volume\nRecommends Vehicle Class"]:::slateNode
+    end
 
-    POLICE_ALERT --> DRAFT_FINE["Automated Draft Penalty Generated (₹50,000 INR)"]:::fine
-    ILLEGAL --> DRAFT_FINE
-    DRAFT_FINE --> OFFICER_REVIEW["Ward Officer Reviews Evidence & Issues Challan"]:::event
+    subgraph DISPATCH["4. Nearest-Truck Auto-Dispatch"]
+        I["⚡ Smart Fleet Matcher\nLocates Nearest Idle Unit\nLocks Crew Atomically"]:::amberNode
+    end
+
+    subgraph RESOLUTION["5. Geo-Fenced Resolution"]
+        J["🚛 Logistics Crew On-Site\nEnforces 30m Proximity Check\nCaptures 3 Photo Angles"]:::greenNode
+        K(["✅ Ticket Closed & Archived\nCleaned Street Verified"]):::emeraldNode
+    end
+
+    A --> D
+    B --> D
+    C --> D
+    D -->|"Duplicate Site Found"| E
+    D -->|"Unique New Location"| F
+    E --> G
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
+
+    classDef blueNode fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,color:#1e40af,font-weight:bold;
+    classDef amberNode fill:#fffbeb,stroke:#f59e0b,stroke-width:2px,color:#92400e,font-weight:bold;
+    classDef purpleNode fill:#faf5ff,stroke:#a855f7,stroke-width:2px,color:#6b21a8,font-weight:bold;
+    classDef greenNode fill:#f0fdf4,stroke:#22c55e,stroke-width:2px,color:#15803d,font-weight:bold;
+    classDef slateNode fill:#f8fafc,stroke:#64748b,stroke-width:2px,color:#1e293b,font-weight:bold;
+    classDef emeraldNode fill:#059669,stroke:#047857,stroke-width:2px,color:#ffffff,font-weight:bold;
 ```
 
 </details>
 
 ---
 
-### 3. The Ward Officer 5-Stage Dispatch Pipeline
+### 🚛 Workflow 2: Rogue Truck Interception & Automated Fines
 
 <details>
-<summary><b>Expand Workflow: How the Ward Command Center Manages Dispatches</b></summary>
-<br>
+<summary><b>Click to Expand: Anti-Dumping Detection (License Plate Check & IoT Geofence Alerts)</b></summary>
+<br/>
+
+```mermaid
+flowchart TD
+    subgraph DETECTION["Surveillance & IoT Detection"]
+        S1["🔍 ANPR Camera Scan\n(Citizen Report or Police Checkpoint)"]:::blueNode
+        S2["⚖️ ESP32 Truck Bed Load-Cell\n(Sudden Weight Drop Mid-Transit)"]:::amberNode
+    end
+
+    subgraph VERIFICATION["Automated Verification Ledger"]
+        V1{"Is License Plate in\nAuthorized Fleet Database?"}:::slateNode
+        V2{"Is Drop Location Within\nAuthorized Landfill Geofence?"}:::slateNode
+    end
+
+    subgraph OUTCOMES["Enforcement Actions"]
+        OK1["✅ Authorized Contractor Hauler\nManifest Validated"]:::greenNode
+        OK2["✅ Official Landfill Disposal\nWeighbridge Receipt Logged"]:::greenNode
+        ALERT1["🚨 Unknown / Rogue Hauler\nFlagged at Police Checkpoint"]:::redNode
+        ALERT2["🚨 Code Red: Illegal Mid-Route Dump\nOutside Authorized Dump Grounds"]:::redNode
+    end
+
+    subgraph PENALTY["Enforcement Penalty"]
+        FINE["⚡ Automated Draft Violation Package\nDraft Fine of ₹50,000 INR Auto-Queued\nWard Officer Reviews Evidence & Issues Challan"]:::crimsonNode
+    end
+
+    S1 --> V1
+    S2 --> V2
+    V1 -->|"Authorized"| OK1
+    V1 -->|"Unregistered"| ALERT1
+    V2 -->|"Inside Landfill"| OK2
+    V2 -->|"Outside Geofence"| ALERT2
+    ALERT1 --> FINE
+    ALERT2 --> FINE
+
+    classDef blueNode fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,color:#1e40af,font-weight:bold;
+    classDef amberNode fill:#fffbeb,stroke:#f59e0b,stroke-width:2px,color:#92400e,font-weight:bold;
+    classDef slateNode fill:#f8fafc,stroke:#64748b,stroke-width:2px,color:#1e293b,font-weight:bold;
+    classDef greenNode fill:#f0fdf4,stroke:#22c55e,stroke-width:2px,color:#15803d,font-weight:bold;
+    classDef redNode fill:#fef2f2,stroke:#ef4444,stroke-width:2px,color:#991b1b,font-weight:bold;
+    classDef crimsonNode fill:#b91c1c,stroke:#991b1b,stroke-width:2px,color:#ffffff,font-weight:bold;
+```
+
+</details>
+
+---
+
+### ⚡ Workflow 3: The 5-Stage Ward Command Pipeline & Smart Vehicle Routing
+
+<details>
+<summary><b>Click to Expand: Ward Command Operations & Matching the 4 Vehicle Classes</b></summary>
+<br/>
 
 ```mermaid
 flowchart LR
-    classDef stage fill:#F8FAFC,stroke:#CBD5E1,stroke-width:2px,color:#0F172A;
-    classDef action fill:#EFF6FF,stroke:#2563EB,stroke-width:2px,color:#1E3A8A;
-    classDef success fill:#ECFDF5,stroke:#10B981,stroke-width:2px,color:#065F46;
+    P1["📥 1. Inbox\nNew incoming grievances\n(Auto-clustered by ward)"]:::step
+    P2["🔍 2. Inspection\nAssigned to Field Inspector\nfor site appraisal"]:::step
+    P3["📋 3. Action Required\nInspector notes logged\nVehicle class selected"]:::step
+    P4["⚡ 4. Smart Fleet Dispatch\nNearest idle truck routed\nvia spherical distance"]:::activeStep
+    P5["🎉 5. Resolved\n3-Angle proof confirmed\nTicket archived"]:::doneStep
 
-    S1["1. Inbox\nUnreviewed Grievances"]:::stage -->|"Assign"| S2["2. Inspection\nField Assessor On-Site"]:::action
-    S2 -->|"Appraise"| S3["3. Action Required\nSite Condition Verified"]:::action
-    S3 -->|"Select Truck Type"| S4["4. Smart Match\nNearest Idle Unit Locked"]:::success
-    S4 -->|"Dispatch"| S5["5. En Route\nCrew Navigates to Target"]:::action
-    S5 -->|"3-Angle Proof"| S6["6. Cleared\nArchived & Resolved"]:::success
+    P1 -->|"Assign Inspector"| P2
+    P2 -->|"Submit Assessment"| P3
+    P3 -->|"One-Click Dispatch"| P4
+    P4 -->|"Field Verification"| P5
+
+    classDef step fill:#f8fafc,stroke:#cbd5e1,stroke-width:2px,color:#1e293b,font-weight:bold;
+    classDef activeStep fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1d4ed8,font-weight:bold;
+    classDef doneStep fill:#ecfdf5,stroke:#059669,stroke-width:2px,color:#065f46,font-weight:bold;
 ```
 
 #### The 4 Municipal Vehicle Classes
@@ -233,65 +261,87 @@ When an inspector assesses a site, the system dispatches the exact vehicle class
 
 ---
 
-### 4. Fraud-Proof 3-Angle Geo-Fenced Resolution
+### 🛡️ Workflow 4: The 30m Geo-Fenced 3-Angle Resolution Protocol
 
 <details>
-<summary><b>Expand Workflow: How False Cleanups are Prevented</b></summary>
-<br>
+<summary><b>Click to Expand: How SpotFix Eliminates "Ghost Cleanups" and Validates Clean Streets</b></summary>
+<br/>
 
 ```mermaid
 flowchart TD
-    classDef step fill:#F9FAFB,stroke:#9CA3AF,stroke-width:1.5px,color:#111827;
-    classDef check fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#78350F;
-    classDef blocked fill:#FEE2E2,stroke:#EF4444,stroke-width:2px,color:#991B1B;
-    classDef passed fill:#ECFDF5,stroke:#10B981,stroke-width:2px,color:#065F46;
+    A["Logistics Crew Receives Target Coordinates"]:::slateNode --> B["Crew Drives to Garbage Location"]:::slateNode
+    B --> C{"Is Device Within\n30 Meters of Target?"}:::amberNode
 
-    ASSIGNED["Logistics Crew Receives Cleanup Task"]:::step --> ARRIVE["Crew Drives to Target Coordinates"]:::step
-    ARRIVE --> PROXIMITY{"Is Worker Within 30 Meters of Site?"}:::check
-    
-    PROXIMITY -->|"Farther than 30m"| BLOCK_DIST["Fraud Prevention Alert\nCamera Locked: Worker Too Far from Site"]:::blocked
-    PROXIMITY -->|"Within 30m"| SPOOF{"Is GPS Mocked or Spoofed?"}:::check
-    
-    SPOOF -->|"Mock Location Detected"| BLOCK_MOCK["Fake GPS Blocked"]:::blocked
-    SPOOF -->|"Genuine GPS Verified"| CAMERA_UNLOCK["Camera Unlocked for Cleanup Verification"]:::passed
+    C -->|"❌ Farther than 30m"| D["🚫 Camera Locked\nFraud alert: Worker is too far from site"]:::redNode
+    C -->|"✅ Within 30m"| E{"Is GPS Provider\nMocked / Spoofed?"}:::amberNode
 
-    CAMERA_UNLOCK --> ANGLE_1["Capture Photo Angle 1/3"]:::step
-    ANGLE_1 --> ANGLE_2["Capture Photo Angle 2/3"]:::step
-    ANGLE_2 --> ANGLE_3["Capture Photo Angle 3/3"]:::step
-    
-    ANGLE_3 --> NET_STATUS{"Network Available?"}:::check
-    NET_STATUS -->|"Offline (No Signal)"| LOCAL_VAULT["Encrypted Local Device Storage\nAuto-Syncs When Signal Returns"]:::passed
-    NET_STATUS -->|"Online"| INSTANT_CLOSE["Upload 3 Photos & Seal Resolution"]:::passed
+    E -->|"❌ Mock GPS Detected"| F["🚫 Security Lockdown\nFaked location rejected"]:::redNode
+    E -->|"✅ Authentic Coordinates"| G["🔓 Camera Unlocked\nInitiate 3-Angle Photographic Audit"]:::greenNode
+
+    G --> H["📸 Angle 1/3: Wide Context Shot"]:::blueNode
+    H --> I["📸 Angle 2/3: Ground-Level Cleared Area"]:::blueNode
+    I --> J["📸 Angle 3/3: Perimeter Cleanliness Proof"]:::blueNode
+
+    J --> K{"Cellular Network\nAvailable?"}:::amberNode
+    K -->|"Offline (Dead Zone)"| L["💾 Encrypted On-Device Vault\nAuto-syncs immediately upon signal recovery"]:::purpleNode
+    K -->|"Online"| M["☁️ High-Speed Direct Cloud Upload\nTicket Sealed & Marked Resolved"]:::emeraldNode
+
+    classDef slateNode fill:#f8fafc,stroke:#64748b,stroke-width:2px,color:#1e293b,font-weight:bold;
+    classDef amberNode fill:#fffbeb,stroke:#f59e0b,stroke-width:2px,color:#92400e,font-weight:bold;
+    classDef redNode fill:#fef2f2,stroke:#ef4444,stroke-width:2px,color:#991b1b,font-weight:bold;
+    classDef greenNode fill:#f0fdf4,stroke:#22c55e,stroke-width:2px,color:#15803d,font-weight:bold;
+    classDef blueNode fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af;
+    classDef purpleNode fill:#faf5ff,stroke:#a855f7,stroke-width:2px,color:#6b21a8,font-weight:bold;
+    classDef emeraldNode fill:#059669,stroke:#047857,stroke-width:2px,color:#ffffff,font-weight:bold;
 ```
 
 </details>
 
 ---
 
-### 5. Construction Debris Mass-Balance Volumetric Audit
+### ⚖️ Workflow 5: Mass-Balance Volumetric Forensic Audit
 
 <details>
-<summary><b>Expand Workflow: How Building Permits Prevent Midnight Dumping</b></summary>
-<br>
+<summary><b>Click to Expand: How Building Permits and Weighbridge Receipts Stop Illegal Disposal</b></summary>
+<br/>
 
 ```mermaid
 flowchart TD
-    classDef step fill:#F8FAFC,stroke:#94A3B8,stroke-width:1.5px,color:#0F172A;
-    classDef branch fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px,color:#92400E;
-    classDef ok fill:#ECFDF5,stroke:#10B981,stroke-width:2px,color:#065F46;
-    classDef alert fill:#FEE2E2,stroke:#EF4444,stroke-width:2px,color:#991B1B;
+    subgraph PERMIT["1. Project Inception"]
+        P1["🏗️ Construction Site Permit Approved\nPre-construction survey sets estimated volume (e.g. 5,000 Tons)"]:::slateNode
+    end
 
-    CONTRACT["Construction Site Permitted\n(e.g., 5,000 Tons Debris Estimated)"]:::step --> DISPATCH["Truck Leaves Site with Digital Manifest\n(Origin Weight: 5,000 kg)"]:::step
-    
-    DISPATCH --> WEIGHBRIDGE["Truck Reaches Landfill Weighbridge\n(Actual Unloaded Weight Recorded)"]:::step
-    
-    WEIGHBRIDGE --> COMPARE{"Weight Difference Calculation"}:::branch
-    COMPARE -->|"Deficit <= 5% (Normal Loss)"| ACCEPT["Weighbridge Audit Passed\nTonnage Added to Official Project Ledger"]:::ok
-    COMPARE -->|"Deficit > 5% (Missing Debris)"| FLAG["Flagged for Investigation\nIllegal Mid-Route Dump Suspected"]:::alert
-    
-    ACCEPT --> PROJECT_END{"Project Timeline Ends"}:::branch
-    PROJECT_END -->|"Total Tonnage Matches Estimate"| COMPLETED["Contract Successfully Closed"]:::ok
-    PROJECT_END -->|"Total Tonnage Severely Deficient"| AUDIT_FAIL["Forensic Audit Failed\nContractor Dashboard Locked & Fined"]:::alert
+    subgraph TRANSIT["2. Transit Phase"]
+        T1["🚚 Truck departs site with Digital Manifest\n(Origin weight recorded: 5,000 kg)"]:::blueNode
+        T2["🚛 Truck arrives at Certified Landfill Weighbridge\n(Actual unloaded weight recorded: 4,850 kg)"]:::blueNode
+    end
+
+    subgraph AUDIT["3. Weighbridge Reconciliation"]
+        W1{"Deficit Percentage Check:\nDifference > 5% Tolerance?"}:::amberNode
+        W_PASS["✅ Weighbridge Pass\nTonnage credited to contract ledger\nManifest sealed"]:::greenNode
+        W_FAIL["🚨 Volumetric Discrepancy Flag\nTransit flagged for investigation\nWard Officer alerted"]:::redNode
+    end
+
+    subgraph PROJECT_CLOSE["4. End-of-Project Forensic Audit"]
+        E1{"Project Completion Date:\nTotal Landfilled vs. Estimated Permit Volume"}:::amberNode
+        E_OK["🏆 Audit Passed\nFull project tonnage accounted for\nContract closed & compliance certificate issued"]:::emeraldNode
+        E_FAIL["⛔ Forensic Audit Failed\nSevere volume deficit detected\nContractor portal locked & penalty proceedings initiated"]:::crimsonNode
+    end
+
+    P1 --> T1 --> T2 --> W1
+    W1 -->|"Within 5% Tolerance"| W_PASS
+    W1 -->|"Deficit > 5%"| W_FAIL
+    W_PASS --> E1
+    E1 -->|"Balanced Volume"| E_OK
+    E1 -->|"Deficit Detected"| E_FAIL
+
+    classDef slateNode fill:#f8fafc,stroke:#64748b,stroke-width:2px,color:#1e293b,font-weight:bold;
+    classDef blueNode fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,color:#1e40af,font-weight:bold;
+    classDef amberNode fill:#fffbeb,stroke:#f59e0b,stroke-width:2px,color:#92400e,font-weight:bold;
+    classDef greenNode fill:#f0fdf4,stroke:#22c55e,stroke-width:2px,color:#15803d,font-weight:bold;
+    classDef redNode fill:#fef2f2,stroke:#ef4444,stroke-width:2px,color:#991b1b,font-weight:bold;
+    classDef emeraldNode fill:#059669,stroke:#047857,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef crimsonNode fill:#b91c1c,stroke:#991b1b,stroke-width:2px,color:#ffffff,font-weight:bold;
 ```
 
 </details>
