@@ -72,43 +72,68 @@ SpotFix introduces an airtight four-layer net to eradicate illegal debris dumpin
 
 ## 👥 How Every Persona Uses SpotFix
 
-SpotFix is engineered so that every participant in the city has a dedicated, friction-free portal:
+SpotFix provides tailored, role-specific interfaces segmented across two platforms: the **Mobile Field App** for on-ground execution, and the **Enterprise Web Console** for central command and oversight.
 
-### 1. 🙋 Citizens (Mobile App)
-- **Point-and-Shoot Simplicity:** Point your camera at a garbage pile or illegal dumping truck. The app captures real GPS coordinates, compresses evidence, and submits in seconds.
-- **Three Languages Out of the Box:** Full native support for English, Marathi (मराठी), and Hindi (हिंदी).
-- **Consensus with Personal Memory:** If dozens report the same site, the system upvotes the ticket and tallies categories, but your personal *My Tickets* screen always remembers what you submitted.
-- **Fair Second Chances:** Made an honest mistake when picking the waste category? Edit your submission once before processing begins.
+### 📱 Mobile Application Personas (On-Ground Field Operations)
+Built with Flutter for high performance, camera-first workflows, offline resilience, and multilingual support (English, Marathi मराठी, and Hindi हिंदी).
 
-### 2. 📋 Ward Site Inspectors (Mobile App)
-- **Field Queue:** Real-time stream of reports assigned by the Ward Office.
-- **On-Site Condition Appraisal:** Inspectors visit the physical location, verify volume, record field notes, and recommend the exact equipment needed (e.g., Mini Tipper vs. JCB Excavator).
+#### 1. 🙋 Citizen / Omnichannel Reporter
+- **Point-and-Shoot Live Reporting:** Fast, frictionless camera capture for garbage dumps and rogue debris. Captures genuine GPS, compresses media, and uploads seamlessly.
+- **Multilingual By Default:** Instant language switching across English, Marathi, and Hindi.
+- **Democratic Consensus with Memory:** When multiple citizens report the same site, the system upvotes the collective ticket, while preserving your personal submission history in *My Tickets*.
+- **Fair Single-Correction Window:** Made an accidental category error? Edit your category once before official processing begins.
+- **Dead-Zone Offline Vault:** Automatically caches reports with full GPS data into on-device local storage when offline, offering a one-tap direct dialer to the **1916 Telephone Helpline**.
 
-### 3. 🏛️ Ward Operations Officers (Enterprise Web Gateway)
-- **5-Stage Live Dispatch Pipeline:** Seamlessly moves complaints from *Inbox* → *Pending Assessment* → *Action Required* → *In Cleaning* → *Resolved*.
-- **Intelligent Fleet Auto-Dispatch:** Click one button to locate and dispatch the closest available municipal truck matching the required class.
-- **Landfill Capacity Management:** Dynamically allocate construction debris to landfills based on live capacity (e.g., Deonar, Mulund, Kanjurmarg).
+#### 2. 📋 Ward Site Inspector
+- **Real-Time Field Triage Queue:** Inspects tickets routed from the Ward Office awaiting on-site physical appraisal.
+- **Site Condition Appraisal:** Records on-site conditions, estimates debris volume, and recommends the required vehicle class (Mini Tipper, Compactor, Open Dumper, or JCB).
+- **Status Upgrade:** Submits field notes to promote tickets to *Field Verified*, unlocking one-click fleet dispatch for the Ward Officer.
 
-### 4. 🚛 BMC Logistics Crews (Mobile App)
-- **Target Coordinates & Turn-by-Turn Navigation:** Instant dispatch notifications with exact map coordinates.
-- **The 30-Meter Geo-Fence:** The camera will not unlock if the crew is farther than 30 meters from the site. No more fake cleanups from across town.
-- **3-Angle Verification:** Workers must take three distinct photographic angles of the pristine, cleaned site before ticket closure.
+#### 3. 🚛 BMC Logistics Cleanup Crew
+- **Turn-by-Turn GPS Dispatch:** Real-time routing directly to target coordinates with vehicle assignment logs.
+- **The 30-Meter Anti-Fraud Geo-Fence:** Hardware camera strictly locks if the crew is farther than 30 meters from the site, preventing remote or fraudulent ticket closures.
+- **3-Angle Photographic Audit:** Crew must capture 3 distinct verification angles of the cleaned, restored street before resolution is permitted.
+- **Offline Resolution Sync:** If cellular signal drops at the dump site, all 3 photo angles are saved locally and auto-synced the moment connection is restored.
 
-### 5. 👮 Traffic Police Checkpoints (Mobile App)
-- **Instant Truck Verification:** Officers aim their camera at commercial dumpers. The app extracts license plates and queries the contractor registry in seconds.
-- **Immediate Draft Challan:** If an unregistered or rogue truck is intercepted, officers generate an instant RTO violation package for official fine issuance.
+#### 4. 👮 Traffic Police Enforcement Checkpoint
+- **Live ANPR License Plate Scanner:** Point camera at commercial dumper trucks to extract number plates in seconds.
+- **Fleet Registry Verification:** Cross-checks plates against active municipal contractor permits in real-time.
+- **Instant Draft Penalty Issuance:** If an unauthorized or rogue hauler is intercepted, triggers an instant RTO violation package for official fine approval.
 
-### 6. 📞 1916 Helpline Operators (Enterprise Web Terminal)
-- **Universal Civic Access:** For elderly residents or citizens without smartphones dialing the 1916 municipal telephone hotline.
-- **Rapid Imageless Intake:** Operators record phone number, category, and street coordinates. The system immediately checks for existing duplicates and dispatches ward resources.
+---
 
-### 7. 🏗️ Construction Contractors (Enterprise Web Portal)
-- **Fleet Integration:** Register vehicles with RTO details and link physical IoT load-cell sensor IDs.
-- **Digital Manifests:** Generate tamper-evident transit manifests before trucks depart excavation sites.
+### 🖥️ Enterprise Web Gateway Personas (Command & Oversight Hub)
+Built with React 19, Vite, and Tailwind CSS for real-time dispatch, multi-ward triage, contractor compliance, and city-wide analytics.
 
-### 8. ⚖️ Landfill Weighbridge Authorities (Enterprise Web Portal)
-- **Incoming Truck Radar:** View every incoming truck currently in transit toward the facility.
-- **Digital Weighbridge Auditing:** Log gross unloaded weight. If weight loss exceeds normal moisture tolerances (>5%), the system flags the manifest for investigation.
+#### 1. 🏛️ Ward Operations Officer (`/ward-officer`)
+- **5-Stage Live Dispatch Queue:** Command center moving grievances across *Inbox* → *Pending Assessment* → *Action Required* → *In Cleaning* → *Resolved*.
+- **50m Malba Incident Zone Clustering:** Detects and groups neighboring debris reports within 50 meters into single macro work orders.
+- **Automated Nearest-Truck Dispatch:** Uses spherical distance matching to route the closest idle crew matching the inspector's recommended vehicle class:
+  - 🚛 *Mini Tipper* (Congested lanes & slums)
+  - 🚚 *Refuse Compactor* (Standard municipal waste)
+  - 🚜 *Open Dumper* (Bulky construction rubble)
+  - 🏗️ *JCB Excavator* (Severe illegal dumps & landslides)
+- **Landfill Target Allocations:** Allocates disposal quotas across municipal dumping grounds (Deonar, Mulund, Kanjurmarg) based on live capacities before authorizing contracts.
+
+#### 2. 📞 1916 Helpline Operator (`/1916-portal`)
+- **Universal Civic Access:** Dedicated terminal for citizens calling the official 1916 municipal telephone helpline.
+- **Rapid Imageless Intake:** Form-based entry capturing caller phone, category, and street coordinates.
+- **Automatic Duplication & Merge Check:** Merges with existing 30m neighborhood reports and dispatches SMS confirmation to the caller.
+
+#### 3. 🏗️ Registered C&D Contractor (`/contractor-portal`)
+- **Fleet Registration & Sensor Integration:** Registers trucks with RTO license plates and links unique physical IoT load-cell sensor IDs.
+- **Site Clearance Permits:** Requests new construction debris permits with estimated tonnage.
+- **Digital Dispatch Manifests:** Generates tamper-evident manifests before trucks depart excavation sites, alerting receiving landfills of inbound tonnage.
+
+#### 4. ⚖️ Landfill Weighbridge Official (`/contractor-portal`)
+- **Inbound Fleet Radar:** Monitors real-time queue of trucks in transit to the dumping ground.
+- **Digital Weighbridge Recording:** Records gross unloaded weight at the weighbridge.
+- **Volumetric Deficit Audit:** Automatically flags manifests with >5% unexplained weight loss for immediate investigation.
+
+#### 5. 🗺️ City Super Administrator (`/super-admin`)
+- **City-Wide Heatmaps & Spatial Analytics:** Panoramic geospatial heatmaps of civic hotspots and recurring dumping corridors.
+- **Contractor Compliance Scorecards:** Tracks contractors with recurring weight deficits or unresolved manifests.
+- **Predictive Infrastructure Planning:** AI-assisted volume trend forecasting to optimize seasonal route planning and truck allocations.
 
 ---
 
@@ -358,6 +383,16 @@ flowchart TD
 | **Duplicate Complaint Floods** | Spatial spherical indexing clusters complaints within 30 meters. Citizens upvote existing reports instead of generating 50 separate work orders for one bin. |
 | **Server Bandwidth Bottlenecks** | Mobile clients upload photos directly to high-speed cloud storage using cryptographic tokens, ensuring the municipal API server never slows down during peak morning hours. |
 | **Token Timeouts in the Field** | Field workers never get logged out mid-inspection; the app silently refreshes authentication credentials in the background before every request. |
+
+---
+
+## 📂 Monorepo Architecture
+
+SpotFix is organized into three clean, production-ready modules:
+
+- **`spotfix-backend/`** — High-performance Node.js & Express 5 core engine. Hosts MongoDB geospatial spherical indexing, Firebase authentication, Cloudinary signed image uploads, IoT sensor ingestion, and automated VRP fleet matching.
+- **`spotfix-dashboard/`** — React 19 & Tailwind CSS enterprise web console. Houses the Ward Officer live dispatch queue, 1916 telephonic intake, contractor fleet hub, landfill weighbridge radar, and city analytics.
+- **`spotfix_app/`** — Flutter cross-platform mobile application. Delivers camera-first live reporting, native multilingual support (EN/MR/HI), anti-spoofing GPS checks, 30m fraud-proof geo-fencing, 3-angle photo verification, and offline Hive database caching.
 
 ---
 
